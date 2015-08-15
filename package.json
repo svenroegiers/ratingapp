@@ -1,11 +1,11 @@
 {
     "name": "ratingapp",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "ratingapp",
     "main": "app.js",
     "author": {
         "name": "Sven Roegiers",
-        "email": ""
+        "email": "svenroegiers@gmail.com"
     },
     "dependencies": {
         "socket.io": "latest",
