@@ -1,0 +1,21 @@
+﻿extends layout
+
+block content
+    div.container
+        div.row
+            #user
+                h1.text-center.login-title(id='username') #{user.firstName}
+                a(href='/signout', class='text-center new-account', id='signoutbutton') Sign Out
+                
+
+
+    div.row(id='events')
+        div.col-sm-6.col-md-4.col-md-offset-4
+            h1.text-center(id='eventtitle') E V E N T S
+            if user.username === "admin"
+                a(href='/createtopic', class='text-center new-topic', id='createevent' ) +
+            else
+
+
+            each topic in topics
+                a(href='/detail?id=#{topic.topicname}', class='eventbutton') #{topic.topicname}

@@ -1,0 +1,92 @@
+﻿extends layout
+
+block content
+    div.container
+        div.row
+            a(href='/home', class='text-center new-account', id='backhome') Back to home
+            div.col-sm-6.col-md-4.col-md-offset-4
+                each topic in topics
+                    
+                    h1.text-center.login-title(id='topicname') #{topic.topicname}
+                    form(name='rating', id='ratingForm' , class='form-signin', action='/rating/#{topic.topicname}', method='POST')
+                            h2.text-center #{topic.subject1}
+                            label.text-center(id='percentage1', for='rating1')
+                            input(type='number', id='rating1', name='rating1', class='form-control', placeholder='0-10',required, min='0', max='10')
+                            textarea(name='comment1' )
+                            h2.text-center #{topic.subject2}
+                            label.text-center(id='percentage2', for='rating2')
+                            input(type='number', name='rating2', class='form-control', placeholder='0-10',required, onfocus='validateRate1()', min='0', max='10')
+                            textarea(name='comment2')
+                            h2.text-center #{topic.subject3}
+                            label.text-center(id='percentage3', for='rating3')
+                            input(type='number', name='rating3', class='form-control', placeholder='0-10',required, onfocus='validateRate2()', min='0', max='10')
+                            textarea(name='comment3')
+                            h2.text-center #{topic.subject4}
+                            label.text-center(id='percentage4', for='rating4')
+                            input(type='number', name='rating4', class='form-control', placeholder='0-10',required, onfocus='validateRate3()', min='0', max='10')
+                            textarea(name='comment4')
+                            h2.text-center #{topic.subject5}
+                            label.text-center(id='percentage5', for='rating5')
+                            input(type='number', name='rating5', class='form-control', placeholder='0-10',required, onfocus='validateRate4()', min='0', max='10')
+                            textarea(name='comment5')
+                            button(id='submit', class='btn btn-lg btn-primary btn-block', type='submit', onclick='validateRate5()') Submit
+                            span.clearfix
+                    #message
+                        if message
+                            h1.text-center.error-message #{message}
+
+
+
+
+        
+        
+
+        
+        script(type="text/javascript").
+
+            function validateRate1() {
+                var x = document.forms["rating"]["rating1"].value;
+                var y = document.forms["rating"]["comment1"];
+                if (x >=8 || x <= 5) {
+                    y.required = true;
+                }else {
+                    y.required = false;
+                }
+            }
+            function validateRate2() {
+                var x = document.forms["rating"]["rating2"].value;
+                var y = document.forms["rating"]["comment2"];
+                if (x >=8 || x <= 5) {
+                    y.required = true;
+                }else {
+                    y.required = false;
+                }
+            }
+            function validateRate3() {
+                var x = document.forms["rating"]["rating3"].value;
+                var y = document.forms["rating"]["comment3"];
+                if (x >=8 || x <= 5) {
+                    y.required = true;
+                }else {
+                    y.required = false;
+                }
+            }
+            function validateRate4() {
+                var x = document.forms["rating"]["rating4"].value;
+                var y = document.forms["rating"]["comment4"];
+                if (x >=8 || x <= 5) {
+                    y.required = true;
+                }else {
+                    y.required = false;
+                }
+            }
+            function validateRate5() {
+                var x = document.forms["rating"]["rating5"].value;
+                var y = document.forms["rating"]["comment5"];
+                if (x >=8 || x <= 5) {
+                    y.required = true;
+                }else {
+                    y.required = false;
+                }
+            }
+        

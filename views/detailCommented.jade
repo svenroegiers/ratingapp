@@ -1,0 +1,71 @@
+﻿extends layout
+
+block content
+    div.container
+        div.row
+        if user.username === "admin"
+            each topic in topics
+                a(href='/home', class='text-center new-account', id='backhome') Back to home
+                a(href='/home?id=#{topic.topicname}', class='text-center', id='deleteevent') Delete
+        else
+                a(href='/home', class='text-center new-account', id='backhome') Back to home
+            div.col-sm-6.col-md-4.col-md-offset-4
+                    each topic in topics
+                        h1.text-center.login-title(id='topicname') #{topic.topicname}
+                        form(name='rating', class='form-signin', action='/rating/#{topic.topicname}', method='POST', id='ratingForm')
+                                h2.text-center #{topic.subject1}
+                                label.text-center(id='percentage1', for='rating1')
+                                each comment in comments
+                                    div(class='comment')
+                                        p.text-center(class='commentusername') #{comment.username} 
+                                        p.text-center(class='commentcreated') #{comment.created.toLocaleTimeString()} #{comment.created.toLocaleDateString()}
+                                        p.text-center(class='commentcontent') #{comment.content1}
+
+                                h2.text-center #{topic.subject2}
+                                label.text-center(id='percentage2', for='rating2')
+                                each comment in comments
+                                    div(class='comment')
+                                        p.text-center(class='commentusername') #{comment.username} 
+                                        p.text-center(class='commentcreated') #{comment.created.toLocaleTimeString()} #{comment.created.toLocaleDateString()}
+                                        p.text-center(class='commentcontent') #{comment.content2}
+
+                                h2.text-center #{topic.subject3}
+                                label.text-center(id='percentage3', for='rating3')
+                                each comment in comments
+                                    div(class='comment')
+                                        p.text-center(class='commentusername') #{comment.username} 
+                                        p.text-center(class='commentcreated') #{comment.created.toLocaleTimeString()} #{comment.created.toLocaleDateString()}
+                                        p.text-center(class='commentcontent') #{comment.content3}
+
+                                h2.text-center #{topic.subject4}
+                                label.text-center(id='percentage4', for='rating4')
+                                each comment in comments
+                                    div(class='comment')
+                                        p.text-center(class='commentusername') #{comment.username} 
+                                        p.text-center(class='commentcreated') #{comment.created.toLocaleTimeString()} #{comment.created.toLocaleDateString()}
+                                        p.text-center(class='commentcontent') #{comment.content4}
+
+                                h2.text-center #{topic.subject5}
+                                label.text-center(id='percentage5', for='rating5')
+                                each comment in comments
+                                    div(class='comment')
+                                        p.text-center(class='commentusername') #{comment.username} 
+                                        p.text-center(class='commentcreated') #{comment.created.toLocaleTimeString()} #{comment.created.toLocaleDateString()}
+                                        p.text-center(class='commentcontent') #{comment.content5}
+                            
+                                span.clearfix
+                        #message
+                            if message
+                                h1.text-center.error-message #{message}
+
+
+
+        
+
+        
+
+
+        script(type="text/javascript").
+           
+            
+
