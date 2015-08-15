@@ -22,7 +22,8 @@ mongoose.connect(dbConfig.url);
 var app = express();
 
 // view engine setup
-app.set('port', process.env.PORT || 1337);
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(favicon());
@@ -68,7 +69,7 @@ if (app.get('env') === 'development') {
 
 module.exports = app;
 
-var server = app.listen(app.get('port'), function () {
+var server = app.listen(app.get('port'), ip, function () {
     console.log(("Express server listening on port " + app.get('port')))
 });
 
@@ -86,15 +87,15 @@ io.sockets.on('connection', function (socket) {
         else {
             console.log(topics[0].topicname);
             socket.emit('topics', topics);
-        }  
+        }
     });
-    
+
     socket.on('new rating', function () {
-            setTimeout(function () {
-                updateRatings();
-            }, 100);
+        setTimeout(function () {
+            updateRatings();
+        }, 100);
     });
-    
+
     function updateRatings() {
         Topic.find().exec(function (err, topics) {
             if (err) {
@@ -106,9 +107,9 @@ io.sockets.on('connection', function (socket) {
             }
         });
 
-        
+
     }
     socket.emit('info', { msg: 'The world is round, there is no up or down.' });
 
-    
+
 });
