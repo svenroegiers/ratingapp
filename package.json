@@ -22,7 +22,7 @@
         "mongoose": "~3.8.12",
         "bcrypt-nodejs": "*",
         "connect-flash": "*",
-        "stylus": "0.49.3",
+        "stylus": "0.49.3"
 
     }
 }
